@@ -1,9 +1,10 @@
-let express = require('express');
+let express = require('express'),
+    app = express(),
+    port = 8081;
 
-let app = express();
-
+app.use(express.static(__dirname + "/public"));
+app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
-app.set('views', './views');
 
 app.use((req, res, next) => {
     let d = new Date();
@@ -15,7 +16,9 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-    res.render('footer');
+    res.render('index');
 });
 
-app.listen(8081, () => {console.log('Server running on port 8081')});
+app.listen(port, () => {
+    console.log(`Server running on port ${ port }`)
+});
