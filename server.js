@@ -20,9 +20,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
+<<<<<<< HEAD
     res.render("login");
+=======
+    res.render('login');
+>>>>>>> d0f3907d6f878f76fad7ecb11a32ce72349fb0b2
 });
 
 app.listen(port, () => {
-    console.log(`Server running on port ${ port }`)
+    console.log(`Server running on port ${port}`);
 });
