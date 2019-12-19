@@ -1,7 +1,7 @@
 let express = require('express'),
     app = express(),
     port = 8081;
-
+//test
 app.use(express.static(__dirname + "/public"));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
@@ -17,6 +17,10 @@ app.use((req, res, next) => {
 
 app.get('/', (req, res) => {
     res.render('index');
+});
+
+app.get('/login', (req, res) => {
+    res.render("login");
 });
 
 app.listen(port, () => {
