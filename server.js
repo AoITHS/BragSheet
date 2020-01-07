@@ -3,7 +3,10 @@ let app = express();
 let port = 8081;
 let mysql = require('mysql');
 let credentials = {
-    
+    host: 'localhost',
+    user: 'root',
+    database: 'bragsheet',
+    password: '!ArchiveMaster123'
 }
 
 app.use(express.static('public'));
@@ -25,7 +28,10 @@ app.get('/', (req, res) => {
 
 app.get('/login', (req, res) => {
     res.render("login");
-    res.render('login');
+});
+
+app.get('/register', (req, res) => {
+    res.render("login");
 });
 
 app.listen(port, () => {
