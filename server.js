@@ -6,8 +6,8 @@ let credentials = {
     
 }
 
-app.use(express.static('../public'));
-app.set('views', '../views');
+app.use(express.static(__dirname + "/public"));
+app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
 
 app.use((req, res, next) => {
@@ -25,6 +25,7 @@ app.get('/', (req, res) => {
 
 app.get('/login', (req, res) => {
     res.render("login");
+    res.render('login');
 });
 
 app.listen(port, () => {
