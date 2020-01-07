@@ -1,9 +1,13 @@
-let express = require('express'),
-    app = express(),
-    port = 8081;
-//test
-app.use(express.static(__dirname + "/public"));
-app.set('views', __dirname + '/views');
+let express = require('express');
+let app = express();
+let port = 8081;
+let mysql = require('mysql');
+let credentials = {
+    
+}
+
+app.use(express.static('../public'));
+app.set('views', '../views');
 app.set('view engine', 'pug');
 
 app.use((req, res, next) => {
