@@ -1,6 +1,10 @@
-let express = require('express'),
-    app = express(),
-    port = 8081;
+let express = require('express');
+let app = express();
+let port = 8081;
+let mysql = require('msql');
+let credentials = {
+    
+}
 
 app.use(express.static(__dirname + "/public"));
 app.set('views', __dirname + '/views');
