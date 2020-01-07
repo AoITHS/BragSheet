@@ -1,25 +1,15 @@
-doctype html
-head
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
-    meta(name='description', content='')
-    meta(name='author', content='')
-    title Modern Business - Start Bootstrap Template
-    // Bootstrap core CSS
-    link(href='vendor/bootstrap/css/bootstrap.min.css', rel='stylesheet')
-    // Custom styles for this template
-    link(href='css/modern-business.css', rel='stylesheet')
-body
-    include header.pug
-<div class="container-fluid">
-    <div class="form-group">
-        <label for="usr">Name:</label>
-        <input type="text" class="form-control" id="'usr">
-    </div>
-    <div>
-        <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="pwd">
-    </div>
-</div>
-
+include header.pug
+.container-fluid
+  .shadow-sm.p-3.mb-5.bg-white.rounded.col-sm-6(style='margin:0 auto;')
+    form
+      .form-group.col-sm-6(style='margin:0 auto;')
+        label.l1(for='exampleInputEmail1') Email address
+        .one
+        input#exampleInputEmail1.form-control.i1(type='email' aria-describedby='emailHelp')
+      .form-group.col-sm-6(style='margin:0 auto;')
+        label.l2(for='exampleInputPassword1') Password
+        .one
+        input#exampleInputPassword1.form-control.i2(type='password')
+      div(style='display: flex; justify-content: center;')
+        button.btn.btn-primary(type='submit' style='margin: 50px 0px 0px 0px;') Login
 include footer.pug
