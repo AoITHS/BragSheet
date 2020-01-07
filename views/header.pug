@@ -10,9 +10,7 @@ head
     include ../public/vendor/bootstrap/css/bootstrap.min.css
     // Custom styles for this template
     include ../public/css/modern-business.css
-    include ../public/css/input.css
-  script(src='/js/input.js')
-nav.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
+nav.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-dark
   .container
     a.navbar-brand(href='index.html') Bragsheet
     button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
@@ -20,9 +18,9 @@ nav.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
     #navbarResponsive.collapse.navbar-collapse
       ul.navbar-nav.ml-auto
         li.nav-item
-          a.nav-link(href='./login') Login
+          a.nav-link(href='/login') Login
         li.nav-item
-          a.nav-link(href='services.html') Register
+          a.nav-link(href='/register') Register
         li.nav-item
           a.nav-link(href='contact.html') Bragsheet
         li.nav-item.dropdown
