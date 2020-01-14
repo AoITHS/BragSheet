@@ -11,5 +11,7 @@ document.querySelector(".btn").addEventListener("click", () =>{
     
     if( (email === "") || (osis === "") || (pass === "") || (cpass === "") ){
         document.querySelector(".error").innerHTML = `something is blank`;
+    }else{
+        document.querySelector("form").submit();
     }
 });
