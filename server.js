@@ -1,6 +1,7 @@
 let express = require('express');
 let app = express();
 let port = 8081;
+let bodyparser = require('body-parser');
 let mysql = require('mysql');
 let credentials = {
     host: 'localhost',
@@ -9,6 +10,7 @@ let credentials = {
     password: '!ArchiveMaster123'
 }
 
+app.use(bodyparser.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.set('views', './views');
 app.set('view engine', 'pug');
@@ -31,7 +33,11 @@ app.get('/login', (req, res) => {
 });
 
 app.get('/register', (req, res) => {
-    res.render("login");
+    res.render("register");
+});
+
+app.post('/register-ap', (req, res) => {
+    
 });
 
 app.listen(port, () => {
