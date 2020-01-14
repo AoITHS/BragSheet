@@ -37,7 +37,7 @@ app.get('/register', (req, res) => {
 });
 
 app.post('/register-ap', (req, res) => {
-    
+    console.log(req.body);
 });
 
 app.listen(port, () => {

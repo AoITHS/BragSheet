@@ -3,15 +3,31 @@ var email,
     pass,
     cpass;
 
+function doc(name){
+    return document.querySelector(name);
+}
+
+function error(e){
+    return doc(".error").innerHTML = `${e}`;
+}
+
 document.querySelector(".btn").addEventListener("click", () =>{
-    email = document.querySelector(".email").value.trim();
-    osis = document.querySelector(".osis").value.trim();
-    pass = document.querySelector(".pass").value.trim();
-    cpass = document.querySelector(".cpass").value.trim();
+    email = doc(".email").value.trim();
+    osis = doc(".osis").value.trim();
+    pass = doc(".pass").value.trim();
+    cpass = doc(".cpass").value.trim();
     
     if( (email === "") || (osis === "") || (pass === "") || (cpass === "") ){
-        document.querySelector(".error").innerHTML = `something is blank`;
+        error(`something is blank`);
     }else{
-        document.querySelector("form").submit();
+        var a = true;
+        if(pass !== cpass){
+            error(`The passwords do not match`);
+        }else{
+            error(``);
+        }
+        console.log(typeof osis);
+        // document.querySelector("form").submit();
+        // error(``);
     }
 });
