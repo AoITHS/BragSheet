@@ -37,7 +37,21 @@ app.get('/register', (req, res) => {
 });
 
 app.post('/register-ap', (req, res) => {
-    
+    let con = mysql.createConnection(credentials);
+    let statement = `
+        INSERT INTO Temp_Accounts (email, password, role)
+        VALUES ('${req.body.email}', '${req.body.pass}', '1');
+    `;
+
+    con.query(statement, (err, result) => {
+        if(err) console.log(err);
+
+        console.log('Changes were made to the database');
+        console.log(result);
+    });
+
+    con.end();
+    res.redirect('/');
 });
 
 app.listen(port, () => {
