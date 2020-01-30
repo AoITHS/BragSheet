@@ -2,13 +2,6 @@ let express = require('express');
 let app = express();
 let port = 8081;
 let bodyparser = require('body-parser');
-let mysql = require('mysql');
-let credentials = {
-    host: 'localhost',
-    user: 'root',
-    database: 'bragsheet',
-    password: '!ArchiveMaster123'
-}
 
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(express.static('public'));
