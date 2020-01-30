@@ -1,6 +1,7 @@
 let express = require('express'),
     app = express(),
-    port = 8081;
+    port = 8081,
+    pug = require("pug");
 
 app.use(express.static(__dirname + "/public"));
 app.set('views', __dirname + '/views');
@@ -19,6 +20,10 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+
+app.get('/account/login', (req, res) => {
+    res.render('accounts/login');
+});
 app.listen(port, () => {
     console.log(`Server running on port ${ port }`)
 });
