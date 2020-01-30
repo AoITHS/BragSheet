@@ -1,0 +1,26 @@
+include header.pug
+.container-fluid(style='margin-top: 100px; height: 80%;')
+  .shadow-sm.p-3.mb-5.bg-white.rounded.col-sm-6(style='margin:0 auto;')
+    form(action="/register-ap" method="post")
+      .form-group.col-sm-6(style='margin:0 auto;')
+        label Email address
+        .one
+        input#exampleInputEmail1.form-control.email(type='email' name='email' aria-describedby='emailHelp')
+      .form-group.col-sm-6(style='margin:0 auto;')
+        label OSIS
+        .one
+        input.form-control.osis(type='number' name='osis' max='999999999' min='0')
+      .form-group.col-sm-6(style='margin:0 auto;')
+        label Password
+        .one
+        input#exampleInputPassword1.form-control.pass(type='password' name='pass')
+      .form-group.col-sm-6(style='margin:0 auto;')
+        label Confirm Password
+        .one
+        input#exampleInputPassword2.form-control.cpass(type='password')
+      div(style='display: flex; justify-content: center;')
+        button.btn.btn-primary(type='button' style='margin: 50px 0px 0px 0px;') Register
+      p.error.col-sm-4
+script
+  include ../public/js/register.js
+include footer.pug

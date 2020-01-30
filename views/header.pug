@@ -1,11 +1,50 @@
 doctype html
-html(lang="en")
-  head
-    title College Brag Sheet
-    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
-    meta(name="description" content="")
-    meta(name="author" content="")
-    link(href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet")
-    link(href="css/modern-business.css" rel="stylesheet")
-  body
-    include navigation
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  meta(name='description' content='')
+  meta(name='author' content='')
+  title Modern Business - Start Bootstrap Template
+  // Bootstrap core CSS
+  style
+    include ../public/vendor/bootstrap/css/bootstrap.min.css
+    // Custom styles for this template
+    include ../public/css/modern-business.css
+nav.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-dark
+  .container
+    a.navbar-brand(href='index.html') Bragsheet
+    button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarResponsive.collapse.navbar-collapse
+      ul.navbar-nav.ml-auto
+        li.nav-item
+          a.nav-link(href='/login') Login
+        li.nav-item
+          a.nav-link(href='/register') Register
+        li.nav-item
+          a.nav-link(href='contact.html') Bragsheet
+        li.nav-item.dropdown
+          a#navbarDropdownPortfolio.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+            | Profile
+          .dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdownPortfolio')
+            a.dropdown-item(href='portfolio-1-col.html') 1 Column Portfolio
+            a.dropdown-item(href='portfolio-2-col.html') 2 Column Portfolio
+            a.dropdown-item(href='portfolio-3-col.html') 3 Column Portfolio
+            a.dropdown-item(href='portfolio-4-col.html') 4 Column Portfolio
+            a.dropdown-item(href='portfolio-item.html') Single Portfolio Item
+        li.nav-item.dropdown
+          a#navbarDropdownBlog.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+            | Admin
+          .dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdownBlog')
+            a.dropdown-item(href='blog-home-1.html') Blog Home 1
+            a.dropdown-item(href='blog-home-2.html') Blog Home 2
+            a.dropdown-item(href='blog-post.html') Blog Post
+        li.nav-item.dropdown
+          a#navbarDropdownBlog.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+            | Other Pages
+          .dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdownBlog')
+            a.dropdown-item(href='full-width.html') Full Width Page
+            a.dropdown-item(href='sidebar.html') Sidebar Page
+            a.dropdown-item(href='faq.html') FAQ
+            a.dropdown-item(href='404.html') 404
+            a.dropdown-item(href='pricing.html') Pricing Table

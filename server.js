@@ -1,10 +1,18 @@
-let express = require('express'),
-    app = express(),
-    port = 8081,
-    pug = require("pug");
+let express = require('express');
+let app = express();
+let port = 8081;
+let bodyparser = require('body-parser');
+let mysql = require('mysql');
+let credentials = {
+    host: 'localhost',
+    user: 'root',
+    database: 'bragsheet',
+    password: '!ArchiveMaster123'
+}
 
-app.use(express.static(__dirname + "/public"));
-app.set('views', __dirname + '/views');
+app.use(bodyparser.urlencoded({extended: true}));
+app.use(express.static('public'));
+app.set('views', './views');
 app.set('view engine', 'pug');
 
 app.use((req, res, next) => {
@@ -20,10 +28,32 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-
-app.get('/account/login', (req, res) => {
-    res.render('accounts/login');
+app.get('/login', (req, res) => {
+    res.render("login");
 });
+
+app.get('/register', (req, res) => {
+    res.render("register");
+});
+
+app.post('/register-ap', (req, res) => {
+    let con = mysql.createConnection(credentials);
+    let statement = `
+        INSERT INTO Temp_Accounts (email, password, role)
+        VALUES ('${req.body.email}', '${req.body.pass}', '1');
+    `;
+
+    con.query(statement, (err, result) => {
+        if(err) console.log(err);
+
+        console.log('Changes were made to the database');
+        console.log(result);
+    });
+
+    con.end();
+    res.redirect('/');
+});
+
 app.listen(port, () => {
-    console.log(`Server running on port ${ port }`)
+    console.log(`Server running on port ${port}`);
 });
