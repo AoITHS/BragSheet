@@ -3,6 +3,8 @@ let app = express();
 let port = 8081;
 let bodyparser = require('body-parser');
 
+const unsafeRegex = /['"\\]/g;
+
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.set('views', './views');
@@ -30,10 +32,20 @@ app.get('/register', (req, res) => {
 });
 
 app.post('/register-ap', (req, res) => {
-    let con = mysql.createConnection(credentials);
+    let con = mysql.createConnection({...credentials, multipleStatements: true});
+    let email = req.body.email.replace(unsafeRegex, x => '\\' + x);
+    let pass = req.body.pass.replace(unsafeRegex, x => '\\' + x);
+    let first = req.body.first.replace(unsafeRegex, x => '\\' + x);
+    let last = req.body.last.replace(unsafeRegex, x => '\\' + x);
+    let osis = req.body.osis.replace(unsafeRegex, x => '\\' + x);
+    let grade = req.body.grade.replace(unsafeRegex, x => '\\' + x);
+
     let statement = `
-        INSERT INTO Temp_Accounts (email, password, role)
-        VALUES ('${req.body.email}', '${req.body.pass}', '1');
+        INSERT INTO Accounts (email, password, role)
+        VALUES ('${email}','${pass}','1');
+
+        INSERT INTO Students (first_name, last_name, school, osis, grade, account)
+        VALUES ('${first}','${last}','${school}','${osis}','${grade}', (SELECT id FROM Accounts WHERE email='${email}'));
     `;
 
     con.query(statement, (err, result) => {

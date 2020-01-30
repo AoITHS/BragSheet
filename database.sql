@@ -14,15 +14,7 @@ CREATE TABLE Accounts (
     id int UNIQUE NOT NULL AUTO_INCREMENT,
     email varchar(255) UNIQUE NOT NULL,
     password varchar(255) NOT NULL,
-    role int NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (role) REFERENCES Roles(id)
-);
-
-CREATE TABLE Temp_Accounts (
-    id int UNIQUE NOT NULL AUTO_INCREMENT,
-    email varchar(255) UNIQUE NOT NULL,
-    password varchar(255) NOT NULL,
+    verified boolean NOT NULL DEFAULT FALSE,
     role int NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (role) REFERENCES Roles(id)
@@ -35,6 +27,8 @@ CREATE TABLE Schools (
 
 CREATE TABLE Students (
     id int UNIQUE NOT NULL AUTO_INCREMENT,
+    first_name varchar(255) NOT NUll,
+    last_name varchar(255) NOT NULL,
     school int NOT NULL,
     osis bigint UNIQUE NOT NULL,
     account int UNIQUE NOT NULL,
