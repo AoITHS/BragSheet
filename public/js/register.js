@@ -57,7 +57,12 @@ doc("#one").addEventListener("click", () =>{
         document.querySelector(".two").style.display = "inline-block";
         document.querySelector(".one").style.display = "none";
     }
+<<<<<<< HEAD
 });
 
 
 
+=======
+    else document.querySelector("form").submit();
+});
+>>>>>>> 43524b7031269ad5d01c5e25ec907942cdb24703
