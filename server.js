@@ -32,13 +32,20 @@ app.get('/register', (req, res) => {
 });
 
 app.post('/register-ap', (req, res) => {
-    let con = mysql.createConnection({...credentials, multipleStatements: true});
+    
+    console.log(req.body);
+    
     let email = req.body.email.replace(unsafeRegex, x => '\\' + x);
     let pass = req.body.pass.replace(unsafeRegex, x => '\\' + x);
+    /*
     let first = req.body.first.replace(unsafeRegex, x => '\\' + x);
     let last = req.body.last.replace(unsafeRegex, x => '\\' + x);
+    */
     let osis = req.body.osis.replace(unsafeRegex, x => '\\' + x);
     let grade = req.body.grade.replace(unsafeRegex, x => '\\' + x);
+
+/*
+    let con = mysql.createConnection({...credentials, multipleStatements: true});
 
     let statement = `
         INSERT INTO Accounts (email, password, role)
@@ -54,8 +61,7 @@ app.post('/register-ap', (req, res) => {
         console.log('Changes were made to the database');
         console.log(result);
     });
-
-    con.end();
+*/
     res.redirect('/');
 });
 

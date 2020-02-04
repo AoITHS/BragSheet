@@ -48,7 +48,7 @@ select.onchange = function(){
     school = select.options[select.selectedIndex].innerHTML;
 };
 
-
+/*
 doc("#one").addEventListener("click", () =>{
     if(school.trim() === "" || grade.trim() === "" || osis === ""){
         alert("something is blank!!!");
@@ -58,6 +58,6 @@ doc("#one").addEventListener("click", () =>{
         document.querySelector(".one").style.display = "none";
     }
 });
-
+*/
 
 
