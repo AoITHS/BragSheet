@@ -2,6 +2,13 @@ let express = require('express');
 let app = express();
 let port = 8081;
 let bodyparser = require('body-parser');
+let db = require("./configuration/db");
+
+db.connect(function(err){
+    if(err) {
+        console.error("Error connecting to " + err.stack);
+    }
+});
 
 const unsafeRegex = /['"\\]/g;
 
@@ -31,27 +38,16 @@ app.get('/register', (req, res) => {
     res.render("register");
 });
 
-app.post('/register-ap', (req, res) => {
-<<<<<<< HEAD
-    
+app.post('/register-ap', (req, res) => {    
     console.log(req.body);
-    
-=======
-    /*
-    let con = mysql.createConnection({...credentials, multipleStatements: true});
->>>>>>> 6d383c34a828900351d6fa9707428282e8da04f8
     let email = req.body.email.replace(unsafeRegex, x => '\\' + x);
     let pass = req.body.pass.replace(unsafeRegex, x => '\\' + x);
-    /*
     let first = req.body.first.replace(unsafeRegex, x => '\\' + x);
     let last = req.body.last.replace(unsafeRegex, x => '\\' + x);
-    */
     let osis = req.body.osis.replace(unsafeRegex, x => '\\' + x);
     let grade = req.body.grade.replace(unsafeRegex, x => '\\' + x);
 
 /*
-    let con = mysql.createConnection({...credentials, multipleStatements: true});
-
     let statement = `
         INSERT INTO Accounts (email, password, role)
         VALUES ('${email}','${pass}','1');
@@ -66,13 +62,7 @@ app.post('/register-ap', (req, res) => {
         console.log('Changes were made to the database');
         console.log(result);
     });
-<<<<<<< HEAD
 */
-=======
-    */
-    
-    console.log(req.body);
->>>>>>> 6d383c34a828900351d6fa9707428282e8da04f8
     res.redirect('/');
 });
 
