@@ -1,58 +1,62 @@
 include header.pug
-.container-fluid(style='margin-top: 100px;')
+.container-fluid(style='margin-top: 100px; height: 800px')
   
   .shadow-sm.p-3.mb-5.bg-white.rounded.col-sm-6(style='margin:0 auto;')
     
-    
+     
     form.one(action="/register-ap" method="post" style='')
-      div.row
-        div.form-group.col-xs-11.col-sm-11.col-md-7.col-lg-9.col-xl-9
-          select.form-control-lg.school(name='school' )
-            option(selected disabled) What school are you in?
-            option Uncommon Leadership Charter High School - 
-            option Brooklyn Lab School - 
-            option Academy of Innovative Technology - Vincent Dodero
-            option Cypress Hill Prep Academy - 
-            option Urban Assembly School for Collaborative Healthcare - 
-            option Multicultural High School - 
+      .part-one
         br
+        select.form-control.col-6.school(name='school' style='margin: 0 auto;')
+          option(selected disabled) What school are you in?
+          option Uncommon Leadership Charter High School - 
+          option Brooklyn Lab School - 
+          option Academy of Innovative Technology - Vincent Dodero
+          option Cypress Hill Prep Academy - 
+          option Urban Assembly School for Collaborative Healthcare - 
+          option Multicultural High School - 
         br
-      div.row
-        div.col-xs-11.col-sm-12.col-md-7.col-lg-7.col-xl-7
-          select.form-control-lg(name='grade')
-            option(selected disabled) Current grade?
-            option 9
-            option 10
-            option 11
-            option 12
+        select.form-control.col-6.grade(name='grade' style='margin: 0 auto;')
+          option(selected disabled) Whate grade are you in?
+          option 9
+          option 10
+          option 11
+          option 12
         br
+        .form-group.col-sm-6(style='margin:0 auto;')
+          label OSIS
+          input.form-control.osis(type='number' name='osis' max='999999999' min='0')
         br
-      div.row
-        div.col-xs-11.col-sm-11.col-md-7.col-lg-7.col-xl-7
-          div.form-group
-            label OSIS
-            input.form-control.osis(type='number' name='osis' max='999999999' min='0')
-        br
-        br
-      div(style='display: flex; justify-content: center;')
-        button.btn.btn-primary#one(type='button' style='margin: 0 auto;') Next
- 
-      .form-group.col-sm-6(style='margin:0 auto;')
-        label Email address
-        input#exampleInputEmail1.form-control.email.border-bottom(type='email' name='email' aria-describedby='emailHelp')
-      
-      .form-group.col-sm-6(style='margin:0 auto;')
-        label Password
-        input#exampleInputPassword1.form-control.pass(type='password' name='pass')
-      
-      .form-group.col-sm-6(style='margin:0 auto;')
-        label Confirm Password
-        input#exampleInputPassword2.form-control.cpass(type='password')
+        div(style='display: flex; justify-content: center;')
+          button.btn.btn-primary#btn-one(type='button' style='margin: 0 auto;') Next
+        h6.error.col-sm-12.mx-auto.text-center.mt-3.text-danger
 
-      div(style='display: flex; justify-content: center;')
-        button.btn.btn-primary#two(type='submit' style='margin: 50px 0px 0px 0px;') Register
-      
-      h6.error.col-sm-12.mx-auto.text-center.mt-3.text-danger
+
+      .part-two.d-none
+
+        .form-group.col-sm-6(style='margin:0 auto;')
+          label First Name
+          input.form-control.first(type='text' name='first')
+        
+        .form-group.col-sm-6(style='margin:0 auto;')
+          label Last Name
+          input.form-control.last(type='text' name='last')
+
+        .form-group.col-sm-6(style='margin:0 auto;')
+          label Email address
+          input#exampleInputEmail1.form-control.email(type='email' name='email' aria-describedby='emailHelp')
+        
+        .form-group.col-sm-6(style='margin:0 auto;')
+          label Password
+          input.form-control.pass(type='password' name='pass')
+        
+        .form-group.col-sm-6(style='margin:0 auto;')
+          label Confirm Password
+          input.form-control.cpass(type='password')
+        
+        div(style='display: flex; justify-content: center;')
+          button.btn.btn-primary#submit(style='margin: 50px 0px 0px 0px;') Register
+        h6.error.col-sm-12.mx-auto.text-center.mt-3.text-danger
 
 script
   include ../public/js/register.js

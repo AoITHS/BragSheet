@@ -32,9 +32,14 @@ app.get('/register', (req, res) => {
 });
 
 app.post('/register-ap', (req, res) => {
+<<<<<<< HEAD
     
     console.log(req.body);
     
+=======
+    /*
+    let con = mysql.createConnection({...credentials, multipleStatements: true});
+>>>>>>> 6d383c34a828900351d6fa9707428282e8da04f8
     let email = req.body.email.replace(unsafeRegex, x => '\\' + x);
     let pass = req.body.pass.replace(unsafeRegex, x => '\\' + x);
     /*
@@ -61,7 +66,13 @@ app.post('/register-ap', (req, res) => {
         console.log('Changes were made to the database');
         console.log(result);
     });
+<<<<<<< HEAD
 */
+=======
+    */
+    
+    console.log(req.body);
+>>>>>>> 6d383c34a828900351d6fa9707428282e8da04f8
     res.redirect('/');
 });
 

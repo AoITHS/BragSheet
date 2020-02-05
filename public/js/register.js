@@ -1,63 +1,43 @@
-// var email,
-//     osis,
-//     pass,
-//     cpass;
-
 function doc(name){
     return document.querySelector(name);
 }
+var info = {
+        school: '',
+        grade: 0,
+        osis: 0,
+        first: '',
+        last: '',
+        email: '',
+        pass: '',
+        cpass: ''
+}
 
-// function error(e){
-//     return doc(".error").innerHTML = `${e}`;
-// }
+doc('#btn-one').addEventListener('click', function(){
 
-doc("#two").addEventListener("click", () =>{
-//     email = doc(".email").value.trim();
-//     osis = doc(".osis").value.trim();
-//     pass = doc(".pass").value.trim();
-//     cpass = doc(".cpass").value.trim();
-    
-//     if( (email === "") || (osis === "") || (pass === "") || (cpass === "") ){
-//         error(`something is blank`);
-//     }else{
-//         var a = true;
-//         if(pass !== cpass){
-//             error(`The passwords do not match`);
-//         }else{
-//             error(``);
-//         }
-//         console.log(typeof osis);
-         doc(".two").submit();
-//         error(``);
-//     }
-    
-    
-});
+    info.school = doc('.school').value.trim();
+    info.grade = doc('.grade').value.trim();
+    info.osis = doc('.osis').value.trim();
 
-
-
-var school;
-var select = doc('.school');
-select.onchange = function(){
-    school = select.options[select.selectedIndex].innerHTML;
-};
-
-var school;
-var select = doc('.school');
-select.onchange = function(){
-    school = select.options[select.selectedIndex].innerHTML;
-};
-
-/*
-doc("#one").addEventListener("click", () =>{
-    if(school.trim() === "" || grade.trim() === "" || osis === ""){
-        alert("something is blank!!!");
+    if(info.school === '' || info.grade === '' || info.osis === ''){
+        doc('.part-one .error').innerHTML = `Something is blank. Please check your code.`;
     }else{
-        doc(".one").submit();
-        document.querySelector(".two").style.display = "inline-block";
-        document.querySelector(".one").style.display = "none";
+        doc(".part-two.d-none").setAttribute("class", "part-two");
+        doc(".part-one").style.display = 'none';
     }
 });
-*/
 
+doc('#submit').addEventListener('click', function(evt){
+    info.first = doc('.first').value;
+    info.last = doc('.last').value;
+    info.email = doc('.email').value;
+    info.pass = doc('.pass').value;
+    info.cpass = doc('.cpass').value;
 
+    if(info.first === '' || info.last === '' || info.email === '' || info.pass === '' || info.cpass === ''){
+        doc('.part-two .error').innerHTML = `Something is blank. Please check your code.`;
+        evt.preventDefault();
+        evt.stopPropogation();
+    }else{
+        doc('form').submit();
+    }
+});
