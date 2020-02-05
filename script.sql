@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
 
 
 INSERT INTO `roles` VALUES  (0, "Administrator"),
-                            (0, "Counsler"), 
+                            (0, "Counselor"), 
                             (0, "Teacher"), 
                             (0, "Student"), 
                             (0, "Guest");
