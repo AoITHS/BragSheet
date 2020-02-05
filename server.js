@@ -7,7 +7,9 @@ let db = require("./configuration/db");
 db.connect(function(err){
     if(err) {
         console.error("Error connecting to " + err.stack);
+        return;
     }
+    console.log("MySQL Connection ID " + db.threadId );
 });
 
 const unsafeRegex = /['"\\]/g;
