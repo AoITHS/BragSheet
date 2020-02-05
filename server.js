@@ -32,15 +32,15 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.get('/login', (req, res) => {
-    res.render("login");
+app.get('/account/login', (req, res) => {
+    res.render("accounts/login");
 });
 
-app.get('/register', (req, res) => {
-    res.render("register");
+app.get('/account/register', (req, res) => {
+    res.render("accounts/register");
 });
 
-app.post('/register-ap', (req, res) => {    
+app.post('/account/register-ap', (req, res) => {    
     console.log(req.body);
     let email = req.body.email.replace(unsafeRegex, x => '\\' + x);
     let pass = req.body.pass.replace(unsafeRegex, x => '\\' + x);
