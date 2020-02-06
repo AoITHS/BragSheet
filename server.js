@@ -2,7 +2,7 @@ let express = require('express');
 let app = express();
 let port = 8081;
 let bodyparser = require('body-parser');
-let db = require("./configuration/db");
+let db = require('./configuration/db');
 
 db.connect(function(err){
     if(err) {
@@ -42,29 +42,29 @@ app.get('/account/register', (req, res) => {
 
 app.post('/account/register-ap', (req, res) => {    
     console.log(req.body);
+
     let email = req.body.email.replace(unsafeRegex, x => '\\' + x);
     let pass = req.body.pass.replace(unsafeRegex, x => '\\' + x);
     let first = req.body.first.replace(unsafeRegex, x => '\\' + x);
     let last = req.body.last.replace(unsafeRegex, x => '\\' + x);
     let osis = req.body.osis.replace(unsafeRegex, x => '\\' + x);
     let grade = req.body.grade.replace(unsafeRegex, x => '\\' + x);
+    let school = req.body.school.replace(unsafeRegex, x => '\\' + x);
 
-/*
+
     let statement = `
         INSERT INTO Accounts (email, password, role)
         VALUES ('${email}','${pass}','1');
-
         INSERT INTO Students (first_name, last_name, school, osis, grade, account)
         VALUES ('${first}','${last}','${school}','${osis}','${grade}', (SELECT id FROM Accounts WHERE email='${email}'));
     `;
 
-    con.query(statement, (err, result) => {
+    db.query(statement, (err, result) => {
         if(err) console.log(err);
-
         console.log('Changes were made to the database');
         console.log(result);
     });
-*/
+
     res.redirect('/');
 });
 
