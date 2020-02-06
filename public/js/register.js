@@ -39,6 +39,12 @@ doc('#submit').addEventListener('click', function(evt){
         evt.preventDefault();
         evt.stopPropogation();
     }else{
-        doc('form').submit();
+        if(info.pass !== info.cpass){
+            doc('.part-two .error').innerHTML = `The password does not match.`;
+            evt.preventDefault();
+            evt.stopPropogation();
+        }else{
+            doc('form').submit();
+        }
     }
 });
