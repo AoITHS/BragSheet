@@ -1,5 +1,15 @@
 include ../header.pug
-
-Testing Script!!!
-
+.container-fluid(style='margin-top: 100px; height: 80%;')
+  .shadow-sm.p-3.mb-5.bg-white.rounded.col-sm-6(style='margin:0 auto;')
+    form
+      .form-group.col-sm-6(style='margin:0 auto;')
+        label.l1(for='exampleInputEmail1') Email address
+        .one
+        input#exampleInputEmail1.form-control.i1(type='email' aria-describedby='emailHelp')
+      .form-group.col-sm-6(style='margin:0 auto;')
+        label.l2(for='exampleInputPassword1') Password
+        .one
+        input#exampleInputPassword1.form-control.i2(type='password')
+      div(style='display: flex; justify-content: center;')
+        button.btn.btn-primary(type='submit' style='margin: 50px 0px 0px 0px;') Login
 include ../footer.pug
