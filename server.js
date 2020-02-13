@@ -4,7 +4,7 @@ let port = 8081;
 let bodyparser = require('body-parser');
 let db = require('./configuration/db');
 let session = require("express-session");
-let passport = require('./configuration/passport');
+let passport = require('./passport');
 
 db.connect(function(err){
     if(err) {
