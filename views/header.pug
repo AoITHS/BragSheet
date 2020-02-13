@@ -19,8 +19,9 @@ nav.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-dark
       span.navbar-toggler-icon
     #navbarResponsive.collapse.navbar-collapse
       ul.navbar-nav.ml-auto
-        li.nav-item
-          a.nav-link(href='/account/login') Login
+        if !loggedin
+          li.nav-item
+            a.nav-link(href='/account/login') Login
         li.nav-item
           a.nav-link(href='/account/register') Register
         li.nav-item
@@ -50,3 +51,6 @@ nav.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-dark
             a.dropdown-item(href='faq.html') FAQ
             a.dropdown-item(href='404.html') 404
             a.dropdown-item(href='pricing.html') Pricing Table
+        if loggedin
+          li.nav-item
+            a.nav-link(href='/logout') Logout

@@ -3,6 +3,8 @@ let app = express();
 let port = 8081;
 let bodyparser = require('body-parser');
 let db = require('./configuration/db');
+let session = require("express-session");
+let passport = require('./configuration/passport');
 
 db.connect(function(err){
     if(err) {
@@ -16,6 +18,9 @@ const unsafeRegex = /['"\\]/g;
 
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(express.static('public'));
+app.use(session({secret: "Yeeerrrr"}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.set('views', './views');
 app.set('view engine', 'pug');
 
@@ -29,11 +34,24 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-    res.render('index');
+    if(req.session.passport) console.log(req.session.passport.user);
+
+    res.render('index', {loggedin: (req.session.passport !== undefined)});
+});
+
+app.get('/logout', (req, res) => {
+    req.session.destroy(err => {
+        if(err) console.log(err);
+        res.redirect('/');
+    });
 });
 
 app.get('/account/login', (req, res) => {
     res.render("accounts/login");
+});
+
+app.post('/account/login-ap', passport.authenticate('local'), (req, res) => {
+    res.redirect('/');
 });
 
 app.get('/account/register', (req, res) => {
