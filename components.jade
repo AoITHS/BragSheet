@@ -1,0 +1,52 @@
+include ../header.pug
+.container-fluid(style='margin-top: 100px; height: 800px')
+  
+  .shadow-sm.p-3.mb-5.bg-white.rounded.col-sm-6(style="margin:0 auto;")
+    
+     
+    form.one(action="/account/register-ap" method="post" style='')
+      .part-one
+        br
+        select.form-control.col-6.school(name="school" style="margin: 0 auto;")
+          option(selected disabled) What school are you in?
+          option(value="1") Uncommon Leadership Charter High School - 
+          option(value="2") Brooklyn Lab School - 
+          option(value="3") Academy of Innovative Technology - Vincent Dodero
+          option(value="4") Cypress Hill Prep Academy - 
+          option(value="5") Urban Assembly School for Collaborative Healthcare - 
+          option(value="6") Multicultural High School - 
+        br
+        div(style='display: flex; justify-content: center;')
+          button.btn.btn-primary#btn-one(type='button' style='margin: 0 auto;') Next
+        h6.error.col-sm-12.mx-auto.text-center.mt-3.text-danger
+
+
+      .part-two.d-none
+
+        .form-group.col-sm-6(style='margin:0 auto;')
+          label Email address
+          input#exampleInputEmail1.form-control.email(type='email' name='email' aria-describedby='emailHelp')
+        
+        .form-group.col-sm-6(style='margin:0 auto;')
+          label First Name
+          input.form-control.first(type='text' name='first')
+        
+        .form-group.col-sm-6(style='margin:0 auto;')
+          label Last Name
+          input.form-control.last(type='text' name='last')
+
+        .form-group.col-sm-6(style='margin:0 auto;')
+          label Teacher Reccomendation #1
+          input.form-control.pass(type='text' name='teacher1')
+        
+        .form-group.col-sm-6(style='margin:0 auto;')
+          label Teacher #1 Email
+          input#exampleInputEmail1.form-control.email(type='email' name='email' aria-describedby='emailHelp')
+        
+        div(style='display: flex; justify-content: center;')
+          button.btn.btn-primary#submit(style='margin: 50px 0px 0px 0px;') Register
+        h6.error.col-sm-12.mx-auto.text-center.mt-3.text-danger
+
+script
+  include ../../public/js/register.js
+include ../footer.pug
