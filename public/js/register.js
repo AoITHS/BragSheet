@@ -1,3 +1,58 @@
+// function doc(name){
+//     return document.querySelector(name);
+// }
+// var info = {
+//         school: '',
+//         grade: 0,
+//         osis: 0,
+//         first: '',
+//         last: '',
+//         email: '',
+//         pass: '',
+//         cpass: ''
+// }
+
+// doc('#btn-one').addEventListener('click', function(){
+
+//     info = {
+//         school: doc('.school').value.trim(),
+//         grade: doc('.grade').value.trim(),
+//         osis: doc('.osis').value.trim()
+//     };
+
+//     if(info.school === '' || info.grade === '' || info.osis === ''){
+//         doc('.part-one .error').innerHTML = `Something is blank. Please check your code.`;
+//     }else{
+//         doc(".part-two.d-none").setAttribute("class", "part-two");
+//         doc(".part-one").style.display = 'none';
+//     }
+// });
+
+// doc('#submit').addEventListener('click', function(evt){
+//     info = {
+//         first: doc('.first').value,
+//         last: doc('.last').value,
+//         email: doc('.email').value,
+//         pass: doc('.pass').value,
+//         cpass: doc('.cpass').value,
+//     };
+
+//     // cpass should compare against password
+//     if(info.first === '' || info.last === '' || info.email === '' || info.pass === '' || info.cpass === ''){
+//         doc('.part-two .error').innerHTML = `Something is blank. Please check your code.`;
+//         evt.preventDefault();
+//         evt.stopPropogation();
+//     }else{
+//         if(info.pass !== info.cpass){
+//             doc('.part-two .error').innerHTML = `The password does not match.`;
+//             evt.preventDefault();
+//             evt.stopPropogation();
+//         }else{
+//             doc('form').submit();
+//         }
+//     }
+// });
+
 function doc(name){
     return document.querySelector(name);
 }
@@ -9,16 +64,14 @@ var info = {
         last: '',
         email: '',
         pass: '',
-        cpass: ''
 }
-
 
 doc('#btn-one').addEventListener('click', function(){
 
     info = {
-        school: doc('.school').value.trim(),
-        grade: doc('.grade').value.trim(),
-        osis: doc('.osis').value.trim()
+        school: doc('.school').value,
+        grade: doc('.grade').value,
+        osis: doc('.osis').value
     };
 
     if(info.school === '' || info.grade === '' || info.osis === ''){
@@ -30,26 +83,27 @@ doc('#btn-one').addEventListener('click', function(){
 });
 
 doc('#submit').addEventListener('click', function(evt){
-    info = {
-        first: doc('.first').value,
-        last: doc('.last').value,
-        email: doc('.email').value,
-        pass: doc('.pass').value,
-        cpass: doc('.cpass').value,
-    };
+    cpass = doc('.cpass').value;
+    info.first = doc('.first').value;
+    info.last = doc('.last').value;
+    info.email = doc('.email').value;
+    info.pass = doc('.pass').value;
 
     // cpass should compare against password
     if(info.first === '' || info.last === '' || info.email === '' || info.pass === '' || info.cpass === ''){
         doc('.part-two .error').innerHTML = `Something is blank. Please check your code.`;
-        evt.preventDefault();
-        evt.stopPropogation();
     }else{
-        if(info.pass !== info.cpass){
+        if(info.pass !== cpass){
             doc('.part-two .error').innerHTML = `The password does not match.`;
-            evt.preventDefault();
-            evt.stopPropogation();
         }else{
-            doc('form').submit();
+            doc('.part-two .error').innerHTML = ``;
+            fetch('account/register-ap', {
+                headers: {
+                    method: "POST",
+                    'Content-Type': "application/json"
+                }, 
+                body: JSON.stringify(info) 
+            });
         }
     }
 });
