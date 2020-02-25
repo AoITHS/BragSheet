@@ -5,6 +5,7 @@ let bodyparser = require('body-parser');
 let db = require('./configuration/db');
 let session = require("express-session");
 let passport = require('./passport');
+let bcrypt = require('bcryptjs');
 
 db.connect(function(err){
     if(err) {
@@ -62,28 +63,31 @@ app.post('/account/register-ap', (req, res) => {
     console.log(req.body);
 
     let email = req.body.email.replace(unsafeRegex, x => '\\' + x);
-    let pass = req.body.pass.replace(unsafeRegex, x => '\\' + x);
     let first = req.body.first.replace(unsafeRegex, x => '\\' + x);
     let last = req.body.last.replace(unsafeRegex, x => '\\' + x);
     let osis = req.body.osis.replace(unsafeRegex, x => '\\' + x);
     let grade = req.body.grade.replace(unsafeRegex, x => '\\' + x);
     let school = req.body.school.replace(unsafeRegex, x => '\\' + x);
+    let pass = req.body.pass;
 
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(pass, salt, (err, hash) => {
+            let statement = `
+                INSERT INTO Accounts (email, password, role)
+                VALUES ('${email}','${hash}','1');
+                INSERT INTO Students (first_name, last_name, school, osis, grade, account)
+                VALUES ('${first}','${last}','${school}','${osis}','${grade}', (SELECT id FROM Accounts WHERE email='${email}'));
+            `;
 
-    let statement = `
-        INSERT INTO Accounts (email, password, role)
-        VALUES ('${email}','${pass}','1');
-        INSERT INTO Students (first_name, last_name, school, osis, grade, account)
-        VALUES ('${first}','${last}','${school}','${osis}','${grade}', (SELECT id FROM Accounts WHERE email='${email}'));
-    `;
-
-    db.query(statement, (err, result) => {
-        if(err) console.log(err);
-        console.log('Changes were made to the database');
-        console.log(result);
+            db.query(statement, (err, result) => {
+                if(err) console.log(err);
+                console.log('Changes were made to the database');
+                console.log(result);
+            });
+        
+            res.redirect('/');
+        });
     });
-
-    res.redirect('/');
 });
 
 app.listen(port, () => {

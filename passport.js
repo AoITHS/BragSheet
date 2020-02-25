@@ -1,6 +1,6 @@
 let passport = require('passport');
 let localStrategy = require('passport-local').Strategy;
-
+let bcrypt = require('bcryptjs')
 let db = require('./configuration/db');
 
 db.connect(function(err){
@@ -27,7 +27,9 @@ passport.use(new localStrategy(
             
             let user = result[0];
 
-            if(user.password !== pass) return done(null, false, {message: 'Inccorect password'});
+            let passwordValid = bcrypt.compareSync(pass, user.password);
+
+            if(!passwordValid) return done(null, false, {message: 'Inccorect password'});
 
             return done(null, user);
         });
