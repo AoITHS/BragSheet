@@ -69,7 +69,7 @@ include ../header.pug
   .shadow-sm.p-3.mb-5.bg-white.rounded.col-sm-6(style="margin:0 auto;")
     .part-one
       br
-      select.col-6.school(name="school" style="margin: 0 auto;")
+      select.col-6.school.form-control(name="school" style="margin: 0 auto; height: 38px;")
         option(selected disabled) What school are you in?
         option(value="1") Uncommon Leadership Charter High School - 
         option(value="2") Brooklyn Lab School - 
@@ -78,7 +78,7 @@ include ../header.pug
         option(value="5") Urban Assembly School for Collaborative Healthcare - 
         option(value="6") Multicultural High School - 
       br
-      select.col-6.grade(name='grade' style='margin: 0 auto;')
+      select.col-6.grade.form-control(name='grade' style='margin: 0 auto; height: 38px; ')
         option(selected disabled) What grade are you in?
         option 9
         option 10

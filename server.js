@@ -17,6 +17,7 @@ db.connect(function(err){
 const unsafeRegex = /['"\\]/g;
 
 app.use(bodyparser.urlencoded({extended: true}));
+app.use(bodyparser.json());
 app.use(express.static('public'));
 app.use(session({secret: "Yeeerrrr"}));
 app.use(passport.initialize());
