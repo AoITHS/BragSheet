@@ -97,12 +97,12 @@ doc('#submit').addEventListener('click', function(evt){
             doc('.part-two .error').innerHTML = `The password does not match.`;
         }else{
             doc('.part-two .error').innerHTML = ``;
-            fetch('account/register-ap', {
+            fetch('/account/register-ap', {
+                method: "POST",
                 headers: {
-                    method: "POST",
                     'Content-Type': "application/json"
                 }, 
-                body: JSON.stringify(info) 
+                body: JSON.stringify(info)
             });
         }
     }
