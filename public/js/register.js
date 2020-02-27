@@ -104,9 +104,16 @@ doc('#submit').addEventListener('click', function(evt){
                 }, 
                 body: JSON.stringify(info)
             })
-            .then( response => response.json)
-            .then( data => {
-                console.log('success:', JSON.stringify(data));
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if(data.error.length > 0){
+                    doc('.part-two .error').innerHTML = data.error;
+                }
+                else
+                {
+                    window.location.replace("/account/login");
+                }
             });
         }
     }
