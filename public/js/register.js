@@ -107,6 +107,13 @@ doc('#submit').addEventListener('click', function(evt){
             .then(response => response.json())
             .then(data => {
                 console.log(data);
+                if(data.error.length > 0){
+                    doc('.part-two .error').innerHTML = data.error;
+                }
+                else
+                {
+                    window.location.replace("/account/login");
+                }
             });
         }
     }

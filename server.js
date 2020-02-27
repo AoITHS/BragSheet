@@ -60,6 +60,10 @@ app.get('/account/register', (req, res) => {
     res.render("accounts/register");
 });
 
+app.get('/form', (req, res) => {
+    res.render("form");
+});
+
 app.post('/account/register-ap', (req, res) => {    
     let email = req.body.email.replace(unsafeRegex, x => '\\' + x);
     let first = req.body.first.replace(unsafeRegex, x => '\\' + x);
