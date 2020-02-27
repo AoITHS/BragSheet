@@ -35,7 +35,7 @@
         <input type="radio" name="gender" value="no-say" checked> Prefer not to say<br>
         <input type="radio" name="gender" value="male"> Male<br>
         <input type="radio" name="gender" value="female"> Female<br>
-        <input type="radio" name="gender" value="other"> Other  
+        <input type="radio" name="gender" value="other"> Other:  
     </form>
     <div class="input-group">
         <input placeholder="Other">
@@ -43,74 +43,29 @@
     <br>
     <p>Race:*</p>
     <form>
-        <input type="checkbox" name="race" value="" checked> Hispanic/Latino<br>
-        <input type="checkbox" name="race" value=""> Black/African American<br>
-        <input type="checkbox" name="race" value=""> Female<br>
-        <input type="checkbox" name="race" value=""> Other  
+        <input type="checkbox" name="race" value="latino" checked> Hispanic/Latino<br>
+        <input type="checkbox" name="race" value="black"> Black/African American<br>
+        <input type="checkbox" name="race" value="asian"> Asian<br>
+        <input type="checkbox" name="race" value="other"> Other:  
     </form>
+    <div class="input-group">
+        <input placeholder="">
+    </div>
     <br>
     <p>Laungages:*</p>
     <form>
-        <input type="checkbox" name="language" value="" checked> Prefer not to say<br>
-        <input type="checkbox" name="language" value=""> Male<br>
-        <input type="checkbox" name="language" value=""> Female<br>
-        <input type="checkbox" name="language" value=""> Other  
+        <input type="checkbox" name="" value="" checked> English<br>
+        <input type="checkbox" name="" value=""> Spanish<br>
+        <input type="checkbox" name="" value=""> French<br>
+        <input type="checkbox" name="" value=""> German<br>
+        <input type="checkbox" name="" value="">   
     </form>
     <br>
-    <p>Date of Birth*</p>
-    <select name="month">
-        <option value="">Month</option>
-        <option value="january">January</option>
-        <option value="february">February</option>
-        <option value="march">March</option>
-        <option value="april">April</option>
-        <option value="may">May</option>
-        <option value="june">June</option>
-        <option value="july">July</option>
-        <option value="august">August</option>
-        <option value="september">September</option>
-        <option value="october">October</option>
-        <option value="november">November</option>
-        <option value="december">December</option>
-    </select>
-    <select name="day">
-        <option value="">Day</option>
-        <option value="">1</option>
-        <option value="">2</option>
-        <option value="">3</option>
-        <option value="">4</option>
-        <option value="">5</option>
-        <option value="">6</option>
-        <option value="">7</option>
-        <option value="">8</option>
-        <option value="">9</option>
-        <option value="">10</option>
-        <option value="">11</option>
-        <option value="">12</option>
-        <option value="">13</option>
-        <option value="">14</option>
-        <option value="">15</option>
-        <option value="">16</option>
-        <option value="">17</option>
-        <option value="">18</option>
-        <option value="">19</option>
-        <option value="">20</option>
-        <option value="">21</option>
-        <option value="">22</option>
-        <option value="">23</option>
-        <option value="">24</option>
-        <option value="">25</option>
-        <option value="">26</option>
-        <option value="">27</option>
-        <option value="">28</option>
-        <option value="">29</option>
-        <option value="">30</option>
-        <option value="">31</option>
-    </select>
-    <select name="year">
-        <option value="">Year</option>
-        <option value="">2000</option>
-    </select>
+    <form action="/action_page.php">
+        <label for="birthday">Date of Birth:</label>
+        <input type="date" id="birthday" name="birthday">
+        <input type="submit">
+    </form>
     <br>
     <p>Teacher #1 Recommendation*</p>
     <div class="input-group">
@@ -122,7 +77,7 @@
         <input placeholder="Teacher Email #1">
     </div>
     <br>
-    <p>Teacher Recommendation #2</p>
+    <p>Teacher #2 Recommendation</p>
     <div class="input-group">
         <input placeholder="Teacher #2">
     </div>
