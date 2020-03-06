@@ -9,118 +9,156 @@
   <meta name="author" content="">
 
   <title></title>
-
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/components.css" rel="stylesheet">
+  <link href="components.css" rel="stylesheet">
 </head>
 <body>
+<div class="container-fluid">
+    <h1>Profile</h1>
     <p>Email Address*</p>
-    <div class="input-group">
         <input placeholder="Email Address">
-    </div>
     <br>
     <p>Student's Name(Last, First)*</p>
-    <div class="input-group">
         <input placeholder="Last Name">
         <input placeholder="First Name">
-    </div>
+    <br>
+    <p>Gender:*</p>
+    <form>
+        <input type="radio" name="gender" value="no-say" checked> Prefer not to say<br>
+        <input type="radio" name="gender" value="male"> Male<br>
+        <input type="radio" name="gender" value="female"> Female<br>
+        <input type="radio" name="gender" value="other"> Other:  <br>
+        <input placeholder="Other">
+    </form>
+    <br>
+    <p>Race:*</p>
+    <form>
+        <input type="checkbox" name="race" value="latino" checked> Hispanic/Latino<br>
+        <input type="checkbox" name="race" value="black"> Black/African American<br>
+        <input type="checkbox" name="race" value="asian"> Asian<br>
+        <input type="checkbox" name="race" value="white"> White<br>
+        <input type="checkbox" name="race" value="other"> Other:<br>
+        <input placeholder="Other">
+    </form>
+    <br>
+    <p>Languages:*</p>
+    <form>
+        <input type="checkbox" name="language" value="english" checked> English<br>
+        <input type="checkbox" name="language" value="spanish"> Spanish<br>
+        <input type="checkbox" name="language" value="french"> French<br>
+        <input type="checkbox" name="language" value="german"> German<br>
+        <input type="checkbox" name="language" value="arabic"> Arabic<br>
+    </form>
+    <br>
+    <form action="/action_page.php">
+        <label for="birthday">Date of Birth:</label>
+        <input type="date" id="birthday" name="birthday">
+    </form>
     <br>
     <p>Teacher #1 Recommendation*</p>
-    <div class="input-group">
         <input placeholder="Teacher #1">
-    </div>
     <br>
     <p>Teacher #1 Email*</p>
-    <div class="input-group">
-        <input placeholder="Teacher Email #1">
-    </div>
+        <input placeholder="Teacher #1 Email">
     <br>
-    <p>Teacher Recommendation #2</p>
-    <div class="input-group">
+    <p>Teacher #2 Recommendation</p>
         <input placeholder="Teacher #2">
-    </div>
     <br>
     <p>Teacher #2 Email</p>
-    <div class="input-group">
-        <input placeholder="Teacher Email #2">
-    </div>
-    <form action="/action_page.php">
-        Email Address*<br>
-        <input type="text" name="email" value="">
-        <br><br>
-      </form> 
-    <form action="/action_page.php">
-        First name:<br>
-        <input type="text" name="firstname" value="">
-        <br>
-        Last name:<br>
-        <input type="text" name="lastname" value="">
-        <br><br>
-      </form> 
-
-    <form action="/action_page.php">
-        Teacher Recommendation #1*<br>
-        <input type="text" name="teach1" value="">
-        <br><br>
-    </form>
-
-    <form action="/action_page.php">
-        Teacher #1 Email*<br>
-        <input type="text" name="teach1-email" value="">
-        <br><br>
-    </form>
-
-    <form action="/action_page.php">
-        Teacher Recommendation #2<br>
-        <input type="text" name="teach2" value="">
-        <br><br>
-    </form>
-    
-    <form action="/action_page.php">
-        Teacher #2 Email<br>
-        <input type="text" name="teach2-email" value="">
-        <br><br>
-    </form>
-
-    <form action="/action_page.php">
-        Describe yourself in three (3) words and explain each with a few sentences.*<br>
-        <input type="text" name="describe" value="">
-        <br><br>
-    </form>
-
-    <form action="/action_page.php">
-        What are three things you have learned from your entire high school journey (think about all previous 3 years)?*<br>
-        <input type="text" name="experience" value="">
-        <br><br>
-    </form>
-
+        <input placeholder="Teacher #2 Email">
+    <br>
     <hr>
-    <h1>FAMILY INFORMATION</h1>
-
-    <h2>Who do you live with*</h2>
-
+    <h1>Self Assess</h1>
+    <br>
+    <p>Describe yourself in three (3) words and explain each with a few sentences.*</p>
+        <input>
+    <br>
+    <p>What are three things you have learned from your entire high school 
+    journey (think about all previous 3 years)?*</p>
+        <input>
+    <br>
+    <hr>
+    <h1>Parents</h1>
+    <br>
+    <p>Who do you live with*</p>
+    <br>
     <form>
         <input type="radio" name="parent" value="mother" checked> Mother<br>
         <input type="radio" name="parent" value="father"> Father<br>
         <input type="radio" name="parent" value="guardian"> Legal Guardian<br>
         <input type="radio" name="parent" value="other"> Other  
-      </form>
-
-    <form action="/action_page.php">
-        Mother's Name:<br>
-        <input type="text" name="mother-name" value="">
-        <br><br>
     </form>
-    <h2>Father's Name:</h2>
-    <form action="/action_page.php">
-        Father's Name:<br>
-        <input type="text" name="father-name" value="">
-        <br><br>
+    <br>
+    <p>Mother's Name:</p>
+        <input placeholder="Mother's Name">
+    <br>
+    <p>Father's Name:</p>
+        <input placeholder="Father's Name">
+    <br>
+    <p>Guardian's Name:</p>
+        <input placeholder="Guardian's Name">
+    <br>
+    <p>Are you the first person in your family going to college?*</p>
+    <form>
+        <input type="radio" name="college" value="yes" checked> Yes<br>
+        <input type="radio" name="college" value="no"> No<br>
     </form>
-    <h2>Guardian's Name:</h2>
-    <h2>Are you the first person in your family going to college?*</h2>
+    <br>
+    <p>Describe your home life (how many people do you live with, what's your parent's income, 
+        what do they do, do you take care of your siblings? etc.)*</p>
+        <input>
+    <br>
+    <p>What are your family's beliefs about education and college in general 
+    (do they want you to stay home, or go away?)?*</p>
+        <input>
+    <br>
+    <hr>
+    <h1>Academics</h1>
+    <br>
+    <p>Current GPA:*</p>
+        <input placeholder="GPA">
+    <br>
+    <p>Explain the academic trends of your transcript*</p>
+        <input>
+    <br>
+    <p>What are your academic strengths in school? What is your favorite subject and why?*</p>
+        <input>
+    <br>
+    <p>What are some academic areas in which you can improve and why?*</p>
+        <input>
+    <br>
+    <p>Have there been events, circumstances, or experiences that have had a negative impact on your academic standing? Explain.*</p>
+        <input>
+    <br>
+    <p>What positive factors (personal, family, summer experiences,
+    teacher interactions) contributed to your academic performance?*</p>
+        <input>
+    <br>
+    <hr>
+    <h1>Activities</h1>
+    <br>
+    <p>List activities in which you have participated (arts, athletics, tutoring, clubs, 
+    community service, paid positions, etc.), the grade(s) you were in, any positions you held
+    (esp. leadership), the number of years, and hours per week.*</p>
+        <input>
+    <br>
+    <p>List awards or honors you have received in or out of school*</p>
+        <input>
+    <br>
+    <hr>
+    <h1>Additional Information</h1>
+    <br>
+    <p>What are your goals for college and the future? Consider career and life goals.*</p>
+        <input>
+    <br>
+    <p>How do you spend your time outside of school? (think about passions, hobbies, etc)*</p>
+        <input>
+    <br>
+    <p>Anything else a recommender should know?</p>
+        <input>
+</div>
 </body>
 </html>

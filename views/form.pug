@@ -1,0 +1,109 @@
+include header.pug
+.container-fluid(style='margin-top: 100px;')
+    .shadow-sm.p-3.mb-5.bg-white.rounded.col-sm-6(style="margin: 0 auto;")
+        #part-one.profile
+
+            .col-sm-10(style='margin: 0 auto;')
+                h5 First Name
+                input.form-control.fname(type='text')
+                br
+
+            .col-sm-10(style='margin: 0 auto;')
+                h5 Middle Initial
+                input.form-control.mi(type='text' max='1')
+                br
+
+            .col-sm-10(style='margin: 0 auto;')
+                h5 Last Name
+                input.form-control.lname(type='text')
+                br
+
+            .col-sm-10(style='margin: 0 auto;')
+                h5 Email address
+                input#exampleInputEmail1.form-control.email(type='email' name='email' aria-describedby='emailHelp')
+                br
+
+            .col-sm-10(style='margin: 0 auto;')
+                h5 Date of Birth
+                input.form-control.dob(type='date')
+                br
+
+            .col-sm-10.gender(style='margin: 0 auto;')
+                h5 Gender
+                input#male(type='radio' name='gender' value='male')
+                label(for='male') Male
+                br
+                input#female(type='radio' name='gender' value='female')
+                label(for='female') Female
+                br
+                input#g-other(type='radio' name='gender' value='other')
+                label#gen-other(for='g-other') Other
+                input.d-none.g-other-v(for='gen-other' style='margin-left: 2px;')
+                br
+
+            .col-sm-10.race(style='margin: 0 auto;')
+                h5 Race
+                input#hispanic(type="checkbox" name='race' value='hispanic')
+                label(for='hispanic') Hispanic/Latino
+                br
+                input#black(type="checkbox" name='race' value='black')
+                label(for='black') Black/African American
+                br
+                input#asian(type="checkbox" name='race' value='asian')
+                label(for='asian') Asian
+                br
+                input#r-other(type="checkbox" name='race' value='other')
+                label#ra-other(for='r-other') Other
+                input.d-none.r-other-v(for='ra-other' style='margin-left: 2px;')
+
+                br
+
+            .col-sm-10.languages(style='margin: 0 auto;')
+                h5 How many languages do you speak?
+                select.lang
+                    option(diabled selected) #
+                    option(value="1") 1
+                    option(value="2") 2
+                    option(value="3") 3
+                    option(value="4") 4
+            br
+
+        #part-two.parents-info.d-none
+            .col-sm-10.words(style='margin: 0 auto;')
+                h5 Who do you live with?
+                select.form-control.live
+                    option Mother
+                    option Father
+                    option Both
+                    option Legal Guardian
+                    option Other
+            br
+
+        #part-three.academics.d-none
+            .col-sm-10.words(style='margin: 0 auto;')
+                h5 What is your current GPA (4.0 scale)?
+                input(type='number' min='0.0' max='4.0')
+            br
+
+        #part-four.activities.d-none
+            .col-sm-10.clubs(style='margin: 0 auto;')
+                h5 List activities in which you have participated (arts, athletics, tutoring, clubs, community service, paid positions, etc.), the grade(s) you were in, any positions you held (esp. leadership), the number of years, and hours per week.*
+                textarea
+
+        part-five.self-assessment.d-none
+            .col-sm-10.words(style='margin: 0 auto;')
+                h5 Describe yourself in three (3) words and explain each with a few sentences.
+                textarea.form-control
+            br
+
+            .col-sm-10.learned(style='margin: 0 auto;')
+                h5 What are three things you have learned from your entire high school journey (think about all previous 3 years)?
+                textarea.form-control
+
+
+        div.col-sm-12(style='display: flex; justify-content: center;')
+            button.btn.btn-primary.part-one(style='margin: 50px 0px 0px 0px;') Next
+        h6.error.col-sm-12.mx-auto.text-center.mt-3.text-danger
+script
+    include ../public/js/form.js
+include footer.pug
