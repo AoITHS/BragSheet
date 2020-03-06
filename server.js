@@ -3,18 +3,10 @@ let app = express();
 let port = 8081;
 let bodyparser = require('body-parser');
 let db = require('./configuration/db');
-let session = require("express-session");
+let session = require('express-session');
 let passport = require('./passport');
 let bcrypt = require('bcryptjs');
-
-db.connect(function(err){
-    if(err) {
-        console.error("Error connecting to " + err.stack);
-        return;
-    }
-    console.log("MySQL Connection ID " + db.threadId );
-});
-
+let transport = require('./configuration/transporter');
 const unsafeRegex = /['"\\]/g;
 
 app.use(bodyparser.urlencoded({extended: true}));
@@ -52,9 +44,7 @@ app.get('/account/login', (req, res) => {
     res.render("accounts/login");
 });
 
-app.post('/account/login-ap', passport.authenticate('local'), (req, res) => {
-    res.redirect('/');
-});
+app.post('/account/login-ap', passport.authenticate('local', {successRedirect: '/', failureRedirect: '/account/login'}),);
 
 app.get('/account/register', (req, res) => {
     res.render("accounts/register");
@@ -81,11 +71,19 @@ app.post('/account/register-ap', (req, res) => {
         else {
             bcrypt.genSalt(10, (err, salt) => {
                 bcrypt.hash(pass, salt, (err, hash) => {
+                    let code = "";
+
+                    for(let i = 0; i < 4; i++) {
+                        code += Math.round(Math.random() * 10);
+                    }
+
                     let statement2 = `
                         INSERT INTO Accounts (email, password, role)
                         VALUES ('${email}','${hash}','1');
                         INSERT INTO Students (first_name, last_name, school, osis, grade, account)
                         VALUES ('${first}','${last}','${school}','${osis}','${grade}', (SELECT id FROM Accounts WHERE email='${email}'));
+                        INSERT INTO VerifyCodes (account, code)
+                        VALUES ((SELECT id FROM Accounts WHERE email='${email}'), '${code}');
                     `;
 
                     db.query(statement2, (err, result) => {
@@ -93,6 +91,18 @@ app.post('/account/register-ap', (req, res) => {
                             console.log(err);
                             return;
                         }
+
+                        let mailOptions = {
+                            from: 'borderhopperbigchungus@gmail.com',
+                            to: req.body.email,
+                            subject: 'Your Bragsheet Verification Code',
+                            text: `Your verification code is ${code}`
+                        }
+                        
+                        transport.sendMail(mailOptions, (err, info) => {
+                            if(err) console.log(err);
+                            else console.log('Email Sent: ' + info.response);
+                        });
 
                         console.log('Changes have been made to the database.');
                         console.log(result);

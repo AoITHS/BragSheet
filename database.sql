@@ -38,6 +38,14 @@ CREATE TABLE Students (
     FOREIGN KEY (school) REFERENCES Schools(id)
 );
 
+CREATE TABLE VerifyCodes (
+    id int UNIQUE NOT NULL AUTO_INCREMENT,
+    account int UNIQUE NOT NULL,
+    code int NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (account) REFERENCES Accounts(id)
+);
+
 INSERT INTO Roles (role)
 VALUES
 ('Student'),
