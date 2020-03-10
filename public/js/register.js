@@ -91,30 +91,35 @@ doc('#submit').addEventListener('click', function(evt){
 
     // cpass should compare against password
     if(info.first === '' || info.last === '' || info.email === '' || info.pass === '' || info.cpass === ''){
-        doc('.part-two .error').innerHTML = `Something is blank. Please check your code.`;
+        doc('.part-two .error').innerHTML = `Something is blank.`;
     }else{
-        if(info.pass !== cpass){
-            doc('.part-two .error').innerHTML = `The password does not match.`;
-        }else{
-            doc('.part-two .error').innerHTML = ``;
-            fetch('/account/register-ap', {
-                method: "POST",
-                headers: {
-                    'Content-Type': "application/json"
-                }, 
-                body: JSON.stringify(info)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                if(data.error.length > 0){
-                    doc('.part-two .error').innerHTML = data.error;
-                }
-                else
-                {
-                    window.location.replace("/account/login");
-                }
-            });
+        
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(info.email) === false) error("You have entered an invalid email address!");
+        else{
+
+            if(info.pass !== cpass) doc('.part-two .error').innerHTML = `The password does not match.`;
+            else{
+                doc('.part-two .error').innerHTML = ``;
+                fetch('/account/register-ap', {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': "application/json"
+                    }, 
+                    body: JSON.stringify(info)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    if(data.error.length > 0){
+                        doc('.part-two .error').innerHTML = data.error;
+                    }
+                    else
+                    {
+                        window.location.replace("/account/login");
+                    }
+                });
+            }
+
         }
     }
 });

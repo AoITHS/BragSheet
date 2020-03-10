@@ -87,7 +87,7 @@ include ../header.pug
       br
       .col-sm-6(style="margin:0 auto;")
         label OSIS
-        input.form-control.osis(type="number" name="osis" min="0" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "9")
+        input.form-control.osis(type="number" name="osis" min="0" oninput="javascript: if (this.value.length > this.maxLength || this.value.length === 'e') this.value = this.value.slice(0, this.maxLength);" maxlength="9")
       br
       div(style='display: flex; justify-content: center;')
         button.btn.btn-primary#btn-one(type='button' style='margin: 0 auto;') Next
