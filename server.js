@@ -7,6 +7,7 @@ let session = require('express-session');
 let passport = require('./passport');
 let bcrypt = require('bcryptjs');
 let transport = require('./configuration/transporter');
+let url = require('url');
 const unsafeRegex = /['"\\]/g;
 
 app.use(bodyparser.urlencoded({extended: true}));
@@ -44,10 +45,44 @@ app.get('/account/login', (req, res) => {
     res.render("accounts/login");
 });
 
-app.post('/account/login-ap', passport.authenticate('local', {successRedirect: '/', failureRedirect: '/account/login'}),);
+app.post('/account/login-ap', passport.authenticate('local', {successRedirect: '/', failureRedirect: '/account/login'}));
 
 app.get('/account/register', (req, res) => {
     res.render("accounts/register");
+});
+
+app.get('/account/verification', (req, res) => {
+    res.render("accounts/verification");
+});
+
+app.get('/account/verify', (req, res) => {
+    let q = url.parse(req.url, true).query;
+
+    if(!q.email || !q.code) {
+        res.redirect('/account/login');
+        return;
+    }
+
+    let email = q.email.replace(unsafeRegex, x => '\\' + x);;
+    let code = q.code.replace(unsafeRegex, x => '\\' + x);;
+
+    let statement = `
+        UPDATE Accounts
+        SET verified='1'
+        WHERE EXISTS (SELECT email FROM VerifyCodes WHERE email='${email}' AND code='${code}');
+    `;
+
+    db.query(statement, (err, result) => {
+        if(err) {
+            console.log(err);
+            return;
+        }
+
+        console.log('Changes have been made to the database.');
+        console.log(result);
+    });
+    
+    res.redirect('/account/login');
 });
 
 app.get('/form', (req, res) => {
@@ -99,8 +134,9 @@ app.post('/account/register-ap', (req, res) => {
                         let mailOptions = {
                             from: 'borderhopperbigchungus@gmail.com',
                             to: req.body.email,
-                            subject: 'Your Bragsheet Verification Code',
-                            text: `Your verification code is ${code}`
+                            subject: 'Verify Your Bragsheet Account',
+                            html: `Click the link below to verify your acount:<br />
+                                   http://localhost:8081/account/verify?email=${email}&code=${code}`
                         }
                         
                         transport.sendMail(mailOptions, (err, info) => {

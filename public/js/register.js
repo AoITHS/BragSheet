@@ -57,7 +57,7 @@ doc('#submit').addEventListener('click', function(evt){
                 }
                 else
                 {
-                    window.location.replace("/account/login");
+                    window.location.replace("/account/verification");
                 }
             });
         }

@@ -31,6 +31,8 @@ passport.use(new localStrategy(
 
             if(!passwordValid) return done(null, false, {message: 'Inccorect password'});
 
+            if(!user.verified) return done(null, false, {message: 'Account Not verified'});
+
             return done(null, user);
         });
     }
