@@ -1,0 +1,15 @@
+include header.pug
+.container-fluid(style='margin-top: 100px;')
+    .shadow-sm.p-3.mb-5.bg-white.rounded.col-sm-6(style="margin: 0 auto;")
+
+        #part-four.activities.d-none
+            .col-sm-10.clubs(style='margin: 0 auto;')
+                h5 List activities in which you have participated (arts, athletics, tutoring, clubs, community service, paid positions, etc.), the grade(s) you were in, any positions you held (esp. leadership), the number of years, and hours per week.*
+                textarea
+                
+        div.col-sm-12(style='display: flex; justify-content: center;')
+            button.btn.btn-primary.part-one(style='margin: 50px 0px 0px 0px;') Next
+        h6.error.col-sm-12.mx-auto.text-center.mt-3.text-danger
+script
+    include ../public/js/profile.js
+include footer.pug

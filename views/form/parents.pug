@@ -1,0 +1,37 @@
+include header.pug
+.container-fluid(style='margin-top: 100px;')
+    .shadow-sm.p-3.mb-5.bg-white.rounded.col-sm-6(style="margin: 0 auto;")
+
+        #part-two.parents-info.d-none
+            .col-sm-10.parent(style='margin: 0 auto;')
+                h5 Who do you live with?
+                select.form-control.live
+                    option Mother
+                    option Father
+                    option Both
+                    option Legal Guardian
+                    option Other
+                    br
+            .col-sm-10.p1(style='margin: 0 auto;')
+                h5 Who do you live with?
+
+                    br
+            .col-sm-10.p1-e(style='margin: 0 auto;')
+                h5 Who do you live with?
+
+                    br
+            .col-sm-10.p2(style='margin: 0 auto;')
+                h5 Who do you live with?
+
+                    br
+            .col-sm-10.p2(style='margin: 0 auto;')
+                h5 Who do you live with?
+
+                    br
+
+        div.col-sm-12(style='display: flex; justify-content: center;')
+            button.btn.btn-primary.part-one(style='margin: 50px 0px 0px 0px;') Next
+        h6.error.col-sm-12.mx-auto.text-center.mt-3.text-danger
+script
+    include ../public/js/parents.js
+include footer.pug
